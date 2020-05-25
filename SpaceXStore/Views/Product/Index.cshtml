@@ -1,0 +1,143 @@
+﻿@model SpaceXStore.Models.Store;
+
+@{
+    ViewBag.Title = "Product List";
+
+}
+
+<h1>Product List</h1>
+<div style="float:left; margin: 15px">
+    <label for="cars">Sort by:</label>
+    <select data-live-search="true" class="selectpicker" name="SortBy" id="SortBy" asp-for="SortedBy">
+        <option value="Id">Product Id</option>
+        <option value="Title">Product Title</option>
+        <option value="Description">Product Description</option>
+        <option value="Price">Price</option>
+        <option value="Popular">Popular</option>
+    </select>
+</div>
+<div style="float:left; margin:10px">
+    <input id="sortDirection" type="hidden" value="@Model.Direction" />
+    <button id="btnAsc" name="btnAsc" >ASC</button>
+    /
+    <button id="btnDesc" name="btnDesc"  >DESC</button>
+</div>
+<span></span>
+<table id="productList" class="table">
+    <tbody>
+        @foreach (var item in Model.Products)
+        {
+            <tr>
+                <td>
+                    <div style="float:left; margin:20px 10px 10px 10px">
+                        <img src="~/product/images/@item.Image" style="width: 55px; height: 55px; margin: 5px;" />
+                    </div>
+                    <div style="float:left; margin:10px; width:320px;">
+                        <div style="margin:5px;">Product Title</div>
+                        <div style="margin:5px;">@item.Title (@item.Id) @Html.Raw(item.Description)</div>
+                        <div style="margin:5px;">@Html.ActionLink("More Details", "Details", new { /* id=item.PrimaryKey */ }, new { @class = "btn btn-outline-secondary btn-sm", data_toggle = "modal", data_target = "#myModal_" + @item.Id })</div>
+                    </div>
+                    <div style="float:left; margin:10px; width:200px; border:solid; border-width:1px;">
+                        <div style="float:left; margin:5px 55px 5px 5px;">Price:</div>
+                        <div style="float:left; margin:5px;">@item.Price EUR</div>
+                        <div style="float:left; margin:5px 15px 5px 5px;">Availability:</div>
+                        <div style="float:left; margin:5px">@item.Availability</div>
+                    </div>
+
+                    <div class="modal fade" id="myModal_@item.Id" role="dialog">
+                        <div class="modal-dialog">
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Product Details</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div>@item.Title</div>
+                                    <div style="float:left; margin:20px 10px 10px 10px">
+                                        <img src="~/product/images/@item.Image" style="width: 55px; height: 55px; margin: 5px;" />
+                                    </div>
+                                    <div style="float:left; margin:10px; width:320px;">
+                                        <div style="margin:-5px;">@Html.Raw(item.Description)</div>
+                                    </div>
+                                    <div>
+                                        <span>Specifications</span>
+                                        <ul>
+                                            @foreach (var spec in item.Specs)
+                                            {
+                                                <li>@spec.Value</li>
+                                            }
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </td>
+                <td><input type="hidden" value="@item.SortOrder" /></td>
+            </tr>
+
+
+        }
+    </tbody>
+</table>
+
+
+<script>
+    $(document).ready(function () {
+    //    $('#productList').DataTable();
+        debugger;
+        var sortValue = document.getElementById('sortDirection').value;
+        setBtnDirectionCSS(sortValue);
+    });
+
+    $('#SortBy').change(function () {
+        reloadPage();
+    });
+
+   
+
+    $('#btnAsc').click(function () {
+        debugger;
+        var ascVal = document.getElementById('sortDirection');
+        ascVal.value = "ASC";
+
+        setBtnDirectionCSS("ASC");
+        reloadPage();
+    });
+    $('#btnDesc').click(function () {
+        var descVal = document.getElementById('sortDirection');
+        descVal.value = "DESC";
+
+        setBtnDirectionCSS("DESC");
+        reloadPage();
+    });
+
+    function setBtnDirectionCSS(direction) {
+        debugger;
+        if (direction == "ASC") {
+            $('#btnAsc').removeClass();
+            $('#btnAsc').addClass('btn btn-secondary btn-sm');
+            $('#btnDesc').removeClass();
+            $('#btnDesc').addClass('btn btn-outline-secondary btn-sm');
+        }
+        else {
+            $('#btnDesc').removeClass();
+            $('#btnDesc').addClass('btn btn-secondary btn-sm');
+            $('#btnAsc').removeClass();
+            $('#btnAsc').addClass('btn btn-outline-secondary btn-sm');
+        }
+    }
+
+    function reloadPage() {
+        var selected = document.getElementById('SortBy').value;
+        var sortDirection = document.getElementById('sortDirection').value;
+
+        window.location = "/Product?SortBy=" + selected + "&direction=" + sortDirection;
+    }
+    
+</script>

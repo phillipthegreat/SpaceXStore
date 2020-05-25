@@ -1,0 +1,11 @@
+E:\Home\HP\Test\SpaceXStore\SpaceXStore.Data\obj\Debug\netstandard2.0\SpaceXStore.Data.csprojAssemblyReference.cache
+E:\Home\HP\Test\SpaceXStore\SpaceXStore.Data\obj\Debug\netstandard2.0\SpaceXStore.Data.csproj.CoreCompileInputs.cache
+E:\Home\HP\Test\SpaceXStore\SpaceXStore.Data\obj\Debug\netstandard2.0\SpaceXStore.Data.AssemblyInfoInputs.cache
+E:\Home\HP\Test\SpaceXStore\SpaceXStore.Data\obj\Debug\netstandard2.0\SpaceXStore.Data.AssemblyInfo.cs
+E:\Home\HP\Test\SpaceXStore\SpaceXStore.Data\bin\Debug\netstandard2.0\Files\Detail.xml
+E:\Home\HP\Test\SpaceXStore\SpaceXStore.Data\bin\Debug\netstandard2.0\Files\List.xml
+E:\Home\HP\Test\SpaceXStore\SpaceXStore.Data\bin\Debug\netstandard2.0\SpaceXStore.Data.deps.json
+E:\Home\HP\Test\SpaceXStore\SpaceXStore.Data\bin\Debug\netstandard2.0\SpaceXStore.Data.dll
+E:\Home\HP\Test\SpaceXStore\SpaceXStore.Data\bin\Debug\netstandard2.0\SpaceXStore.Data.pdb
+E:\Home\HP\Test\SpaceXStore\SpaceXStore.Data\obj\Debug\netstandard2.0\SpaceXStore.Data.dll
+E:\Home\HP\Test\SpaceXStore\SpaceXStore.Data\obj\Debug\netstandard2.0\SpaceXStore.Data.pdb
